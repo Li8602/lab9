@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cosmos Nearby: open astronomy lectures, speakers, podcasts and online tickets.">
+  <title>Cosmos Nearby | Educational Astronomy Lecture Hall</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Theme switch state (pure CSS): unchecked = dark (default), checked = light -->
+  <input type="checkbox" id="theme-toggle" class="visually-hidden" aria-label="Switch between dark and light theme">
+
+  <!-- 1. Header / Nav -->
+  <header>
+    <a href="#top" class="logo">Cosmos Nearby</a>
+
+    <input type="checkbox" id="menu-toggle" class="visually-hidden" aria-label="Open menu">
+    <label for="menu-toggle" class="burger">
+      <img src="images/icon-burger.svg" alt="Menu">
+    </label>
+
+    <nav aria-label="Main navigation">
+      <a href="#schedule">Playbill</a>
+      <a href="#schedule">Speakers</a>
+      <a href="#register">Podcasts</a>
+    </nav>
+
+    <a href="#register" class="btn btn-ticket">Buy a Ticket</a>
+  </header>
+
+  <main id="top">
+
+    <!-- 2. Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Simply About the Structure of the Universe</h1>
+      <a href="#schedule" class="btn">View Schedule</a>
+    </section>
+
+    <!-- 3. Grid: lecture announcements -->
+    <section id="schedule" class="schedule" aria-labelledby="schedule-title">
+      <h2 id="schedule-title">Playbill</h2>
+
+      <article class="card">
+        <time datetime="2026-11-15T19:00">Nov 15 · 7:00 PM</time>
+        <h3>Black Holes: What's Inside?</h3>
+        <p class="speaker">Dr. A. Ivanov, Doctor of Physics and Mathematics</p>
+        <p class="status available">Available: 24 seats</p>
+      </article>
+
+      <article class="card">
+        <time datetime="2026-11-22T18:30">Nov 22 · 6:30 PM</time>
+        <h3>Dark Matter Without Formulas</h3>
+        <p class="speaker">Dr. M. Petrova, PhD in Physics and Mathematics</p>
+        <p class="status available">Available: 8 seats</p>
+      </article>
+
+      <article class="card">
+        <time datetime="2026-11-29T19:00">Nov 29 · 7:00 PM</time>
+        <h3>How Stars Are Born</h3>
+        <p class="speaker">Prof. S. Orlov, Doctor of Science</p>
+        <p class="status sold-out">Sold out</p>
+      </article>
+    </section>
+
+    <!-- 4. Feedback form -->
+    <section id="register" class="register" aria-labelledby="register-title">
+      <h2 id="register-title">Register for Open Online Broadcasts</h2>
+
+      <form action="#" method="get">
+        <label for="name" class="visually-hidden">Name</label>
+        <input type="text" id="name" name="name" placeholder="Name" minlength="2" required autocomplete="name">
+        <span class="hint">Please enter your name (at least 2 characters).</span>
+
+        <label for="email" class="visually-hidden">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" required autocomplete="email">
+        <span class="hint">Please enter a valid email, for example name@example.com.</span>
+
+        <label for="phone" class="visually-hidden">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="Phone" pattern="[0-9+\-\s()]{7,}" required autocomplete="tel">
+        <span class="hint">Please enter a valid phone number (digits, +, -, spaces).</span>
+
+        <button type="submit" class="btn">Register</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- 5. Footer -->
+  <footer>
+    <section aria-labelledby="partners-title">
+      <h3 id="partners-title">Partner Observatories</h3>
+      <ul>
+        <li><a href="https://www.gaoran.ru/" target="_blank" rel="noopener">Pulkovo Observatory</a></li>
+        <li><a href="https://crao.ru/" target="_blank" rel="noopener">Crimean Astrophysical Observatory</a></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="social-title">
+      <h3 id="social-title">Social Media</h3>
+      <ul>
+        <li><a href="https://t.me/" target="_blank" rel="noopener">Telegram</a></li>
+        <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="theme-title">
+      <h3 id="theme-title">Theme</h3>
+      <label for="theme-toggle" class="switch">
+        <span class="switch-track"></span>
+        <span>Dark / Light</span>
+      </label>
+    </section>
+
+    <section class="legal" aria-label="Legal information">
+      <small>© 2026 Cosmos Nearby. All rights reserved.</small>
+      <a href="#top">Privacy Policy</a>
+      <a href="#top">Terms of Use</a>
+    </section>
+  </footer>
+
+</body>
+</html>
