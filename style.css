@@ -1,0 +1,471 @@
+/* ===== 1. Reset ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== 2. Design tokens: dark theme by default ===== */
+:root {
+  --bg: #0B0F1A;
+  --card: #151B2E;
+  --text: #E8ECF5;
+  --muted: #A9B3CC;
+  --accent: #6D4AFF;
+  --accent-text: #9F87FF;
+  --border: #2A3350;
+  --gutter: 1rem;
+  color-scheme: dark;
+}
+
+/* Light theme: the checkbox in the footer switches it without JavaScript */
+:root:has(#theme-toggle:checked) {
+  --bg: #F5F7FF;
+  --card: #FFFFFF;
+  --text: #121626;
+  --muted: #4A5270;
+  --accent: #5B3DF5;
+  --accent-text: #5B3DF5;
+  --border: #CBD2E6;
+  color-scheme: light;
+}
+
+/* ===== 3. Base ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-bottom: 6rem; /* room for the fixed ticket button on phones */
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+h1, h2, h3 {
+  line-height: 1.15;
+}
+
+h2 {
+  margin-bottom: 1.25rem;
+  font-size: 1.75rem;
+}
+
+/* Visually hidden, but still available to keyboards and screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 0.0625rem;
+  height: 0.0625rem;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+/* ===== 4. Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding-inline: 1.75rem;
+  border: none;
+  border-radius: 1rem;
+  background: var(--accent);
+  color: #FFFFFF;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(1.15);
+}
+
+:focus-visible,
+#menu-toggle:focus-visible ~ .burger,
+:root:has(#theme-toggle:focus-visible) .switch-track {
+  outline: 0.2rem solid var(--accent-text);
+  outline-offset: 0.2rem;
+}
+
+/* ===== 5. Header / Nav (mobile first) ===== */
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem var(--gutter);
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.burger {
+  display: block;
+  width: 1.75rem;
+  cursor: pointer;
+}
+
+:root:has(#theme-toggle:checked) .burger img {
+  filter: invert(1);
+}
+
+/* Hidden burger menu on phones */
+header nav {
+  position: absolute;
+  top: 100%;
+  left: var(--gutter);
+  right: var(--gutter);
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: thin solid var(--border);
+  border-radius: 1rem;
+  background: var(--card);
+}
+
+#menu-toggle:checked ~ nav {
+  display: flex;
+}
+
+header nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+header nav a:hover {
+  color: var(--text);
+}
+
+/* Thumb Zone: the main CTA sits at the bottom of the phone screen */
+.btn-ticket {
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 20;
+  box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.5);
+}
+
+/* ===== 6. Hero ===== */
+main {
+  padding-inline: var(--gutter);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  min-height: 70vh;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  color: #E8ECF5;
+  background:
+    linear-gradient(0deg, rgba(11, 15, 26, 0.85), rgba(11, 15, 26, 0) 65%),
+    url("images/hero-space.webp") center / cover no-repeat,
+    radial-gradient(circle at 75% 30%, #7A5CFF 0, #3B2A8F 14%, transparent 38%),
+    #050818;
+}
+
+.hero h1 {
+  max-width: 48rem;
+  font-size: 2.25rem;
+}
+
+/* ===== 7. Grid section: lecture cards ===== */
+.schedule,
+.register {
+  margin-top: 3rem;
+}
+
+.schedule {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.schedule h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 0.25rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.25rem;
+  border: thin solid var(--border);
+  border-radius: 1.25rem;
+  background: var(--card);
+}
+
+.card time {
+  color: var(--accent-text);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.card h3 {
+  font-size: 1.35rem;
+}
+
+.speaker {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.status {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.35rem 0.9rem;
+  border-radius: 99rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.available {
+  background: #2ECC71;
+  color: #06210F;
+}
+
+.sold-out {
+  background: #FF5C5C;
+  color: #2A0505;
+}
+
+/* ===== 8. Feedback form with pure-CSS validation ===== */
+.register {
+  max-width: 36.75rem;
+  margin-inline: auto;
+}
+
+.register h2 {
+  font-size: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+input {
+  min-height: 3.25rem;
+  padding-inline: 1.1rem;
+  border: thin solid var(--border);
+  border-radius: 0.875rem;
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+/* Invalid: red border + hint. Valid: green border. Only after the user typed something */
+input:not(:placeholder-shown):invalid {
+  border-color: #FF5C5C;
+}
+
+input:not(:placeholder-shown):valid {
+  border-color: #2ECC71;
+}
+
+.hint {
+  display: none;
+  margin-top: -0.4rem;
+  color: #FF5C5C;
+  font-size: 0.875rem;
+}
+
+input:not(:placeholder-shown):invalid + .hint {
+  display: block;
+}
+
+form .btn {
+  width: 100%;
+}
+
+/* ===== 9. Footer ===== */
+footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 4rem;
+  padding: 2.5rem var(--gutter) 1.5rem;
+  border-top: thin solid var(--border);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+footer h3 {
+  margin-bottom: 0.6rem;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer li {
+  margin-bottom: 0.35rem;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.switch-track {
+  display: block;
+  width: 3.25rem;
+  height: 1.75rem;
+  padding: 0.25rem;
+  border-radius: 99rem;
+  background: var(--accent);
+}
+
+.switch-track::after {
+  content: "";
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+:root:has(#theme-toggle:checked) .switch-track::after {
+  margin-left: 0;
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding-top: 1.5rem;
+  border-top: thin solid var(--border);
+  font-size: 0.875rem;
+}
+
+/* Squircle corners where the browser supports them (Chrome, Edge) */
+@supports (corner-shape: squircle) {
+  .btn, .card, input, .hero, header nav {
+    corner-shape: squircle;
+  }
+}
+
+/* ===== 10. Desktop: one column becomes a multi-column layout ===== */
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 8.333%; /* 120 of 1440 */
+  }
+
+  body {
+    padding-bottom: 0;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+  }
+
+  header {
+    padding-block: 1.25rem;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  header nav,
+  #menu-toggle:checked ~ nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    padding: 0;
+    border: none;
+    background: none;
+  }
+
+  .btn-ticket {
+    position: static;
+    min-height: 2.75rem;
+    border-radius: 0.875rem;
+    box-shadow: none;
+  }
+
+  .hero {
+    min-height: 32.5rem;
+    padding: 3.5rem;
+  }
+
+  .hero h1 {
+    font-size: 4rem;
+  }
+
+  .schedule,
+  .register {
+    margin-top: 5rem;
+  }
+
+  .schedule {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .register h2 {
+    font-size: 1.75rem;
+  }
+
+  footer {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 5rem;
+  }
+
+  .legal {
+    grid-column: 1 / -1;
+  }
+}
